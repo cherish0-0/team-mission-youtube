@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <button class="menu">☰</button>
+            <h1 class="youtube-logo">YouTube</h1>
+        </div>
+        <div class="search-container">
+            <input class="search-bar" type="search" placeholder="Search">
+            <button class="search-button">
+                <img class="search" src="assets/icons/magnifying-glass-solid.svg">
+            </button>
+            <button class="voice-search-button">
+                <img class="voice" src="assets/icons/microphone-solid.svg">
+            </button>
+        </div>
+        <div class="user-section">
+            <button class="make-video-button">
+                + 만들기
+            </button>
+            <button class="NTC-button">
+                <img class="NTC" src="assets/icons/bell-solid.svg">
+            </button>
+            <button class="user-profile">
+                <img class="profile" src="assets/icons/user-solid.svg">
+            </button>
+        </div>
+    </header>
+
+    <nav class="sidebar">
+        <ul>
+            <li class="sidebar-item">
+                <button class="sidebar-icon_home">
+                    <img class="home" src="assets/icons/house-solid.svg">
+                    </br>
+                    <span>홈</span>
+                </button>
+            </li>
+            <li class="sidebar-item">
+                <button class="sidebar-icon_sub">
+                    <img class="sub" src="assets/icons/box-archive-solid.svg">
+                    </br>
+                    <span>구독</span>
+                </button>
+            </li>
+            <li class="sidebar-item">
+                <button class="sidebar-icon_mypage">
+                    <img class="mypage" src="assets/icons/circle-user-solid.svg">
+                    </br>
+                    <span>내 페이지</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="main-content">
+        <div class="video-preview">
+            <a href="" class="video-link">
+                <div class="thumbnail">썸네일1</div>
+                <div class="video-info">
+                    <div class="channel-avatar"></div>
+                    <div class="video-details">
+                        <p class="video-title"></p>
+                        <p class="channel-name"></p>
+                        <p class="video-stats"></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>
