@@ -96,9 +96,22 @@ function initializeApp() {
                 searchVideos(query);
             }
 
+            async function fetchFromAPI(url) {
+                try {
+                    const response = await fetch(url);
+                    if(!response.ok) {
+                        throw new Error(`API request failed with status ${response.status}`);
+                    }
+                    return await response.json();
+                } catch (error) {
+                    console.error("API request error:", error);
+                    return null;
+                }
+            }
+
             async function fetchPopularVideos() {
                 const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&regionCode=KR&maxResults=12&key=${API_KEY}`;
-                const data = await fetichFromAPI(url);
+                const data = await fetchFromAPI(url);
 
                 if (!data || !data.items) {
                     displayDummyVideos();
@@ -110,7 +123,7 @@ function initializeApp() {
 
             async function fetchTrendingVideos() {
                 const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&regionCode=KR&maxResults=12&videoCategoryId=1&key=${API_KEY}`;
-                const data = await fetichFromAPI(url);
+                const data = await fetchFromAPI(url);
 
                 if (!data || !data.items) {
                     displayDummyVideos();
@@ -122,7 +135,7 @@ function initializeApp() {
 
             async function fetchMusicVideos() {
                 const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&regionCode=KR&maxResults=12&videoCategoryId=10&key=${API_KEY}`;
-                const data = await fetichFromAPI(url);
+                const data = await fetchFromAPI(url);
 
                 if (!data || !data.items) {
                     displayDummyVideos();
@@ -134,7 +147,7 @@ function initializeApp() {
 
             async function fetchGamingVideos() {
                 const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&regionCode=KR&maxResults=12&videoCategoryId=20&key=${API_KEY}`;
-                const data = await fetichFromAPI(url);
+                const data = await fetchFromAPI(url);
 
                 if (!data || !data.items) {
                     displayDummyVideos();
@@ -146,7 +159,7 @@ function initializeApp() {
 
             async function searchVideos(query) {
                 const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&q=${query}&type=video&key=${API_KEY}`;
-                const data = await fetichFromAPI(url);
+                const data = await fetchFromAPI(url);
 
                 if (!data || !data.items) {
                     displayDummyVideos();
@@ -183,21 +196,21 @@ function initializeApp() {
                     return;
                 }
 
-                const videoId = video.id.vdieoId || video.id;
+                const videoId = video.id.videoId || video.id;
                 const title = video.snippet.title;
                 const channelTitle = video.snippet.channelTitle;
                 const channelId = video.snippet.channelId;
 
                 const thumbnailUrl = video.snippet.thumbnails?.high?.url || "";
                 const viewCount = video.statistics?.viewCount ?
-                formatViewcount(video.statistics.viewCount)
+                formatViewCount(video.statistics.viewCount)
                 : "N/A";
-                const publishAt = formatPublishedDate(video.snippet.publishAt);
+                const publishedAt = formatPublishedDate(video.snippet.publishedAt);
 
                 const channelThumbnailUrl = "";
 
                 const videoCard = document.createElement("article");
-                videoCard.className = "video-card"
+                videoCard.className = "video-card";
 
                 videoCard.innerHTML = `
                 <a href="https://www.youtube.com/watch?v=${videoId}" class="video-link" target="_blank">
@@ -294,7 +307,7 @@ function initializeApp() {
                 videoCard.className = "video-card";
                 videoCard.innerHTML = `
                     <a href="#" class="video-link">
-                        <div class="thumbnail" aria-label="${data.title} 썸네일">썸네일${index + 1}</div>
+                        <div class="thumbnail" aria-label="${data.title} 썸네일">썸네일 ${index + 1}</div>
                         <div class="video-info">
                             <div class="channel-avatar" aria-hidden="true" data-channel="${data.channel}">
                             ${data.channel.charAt(0)}
@@ -351,7 +364,7 @@ function initializeApp() {
             function formatPublishedDate(publishedAt) {
                 if (!publishedAt) return "알 수 없음";
 
-                const pusblished = new Date(publishedAt);
+                const published = new Date(publishedAt);
                 const now = new Date();
                 const diffMs = now - published;
 
@@ -406,7 +419,7 @@ function initializeApp() {
                                 `.channel-avatar[data-channel-id="${channelId}"]`
                             );
                             if (avatarElement) {
-                                avatarElement.style.backgroundImage = `url('${channelThumbnailUrl})`;
+                                avatarElement.style.backgroundImage = `url('${channelThumbnailUrl}')`;
                                 avatarElement.style.backgroundPosition = "center";
                                 avatarElement.textContent = "";
                             }
@@ -429,7 +442,7 @@ function initializeApp() {
                     return `#${"00000".substring(0, 6 - c.length)}${c}`;
                 };
 
-                const colorCode = getcolorCode(channelName);
+                const colorCode = getColorCode(channelName);
 
                 element.style.backgroundColor = colorCode;
                 element.textContent = channelName.charAt(0).toUpperCase();
