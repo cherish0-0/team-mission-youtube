@@ -60,7 +60,7 @@ body {
   justify-content: center;
   margin-right: 12px;
   font-weight: bold;
-  overflow: hidden; /* 이미지가 원형을 벗어나지 않도록 */
+  overflow: hidden;
   background-size: cover;
   background-position: center;
 }
@@ -73,7 +73,7 @@ body {
   font-weight: bold;
   margin-bottom: 4px;
   font-size: 14px;
-  color: #606060;
+  color: #bebebe;
   display: '-webkit-box';
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -83,13 +83,13 @@ body {
 
 .channel-name {
   font-size: 14px;
-  color: #606060;
+  color: #747474;
   margin-bottom: 4px;
 }
 
 .video-stats {
   font-size: 14px;
-  color: #606060;
+  color: #747474;
 }
 
 @media (max-width: 1200px) {
@@ -116,26 +116,17 @@ body {
     .sidebar-icon {
       margin-right: 0;
     }
-  
-    .content {
-      margin-left: 72px;
-      width: calc(100% - 72px);
-    }
   }
-  
 
-  @media (max-width: 480px) {
-    .content {
-      grid-template-columns: 1fr;
-    }
-  
-    .search-container {
-      display: none;
-    }
-  }
 
   @media (max-width: 762px) {
     .content {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 656px) {
+    .search-bar {
+      display: none;
     }
   }
