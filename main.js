@@ -110,7 +110,7 @@ function initializeApp() {
             }
 
             async function fetchPopularVideos() {
-                const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&regionCode=KR&maxResults=12&key=${API_KEY}`;
+                const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&regionCode=KR&maxResults=50&key=${API_KEY}`;
                 const data = await fetchFromAPI(url);
 
                 if (!data || !data.items) {
@@ -158,7 +158,7 @@ function initializeApp() {
             }
 
             async function searchVideos(query) {
-                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=12&q=${query}&type=video&key=${API_KEY}`;
+                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${query}&type=video&key=${API_KEY}`;
                 const data = await fetchFromAPI(url);
 
                 if (!data || !data.items) {

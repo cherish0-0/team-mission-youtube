@@ -1,0 +1,34 @@
+.sidebar {
+    display: flex;
+    width: 80px;
+    height: 100%;
+    padding: 0;
+    overflow-y: auto;
+    position: fixed;
+}
+
+ul {
+    width: 55px;
+    height: 100%;
+}
+
+.sidebar-item {
+    list-style: none;
+    text-align: center;
+    background-color: black;
+    border: none;
+    margin: 25px 0;
+}
+
+.sidebar-item button {
+    border: none;
+    color: white;
+    background: none;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.sidebar-item:hover button {
+  background-color: #7b7b7b;
+  width: 60px;
+}
